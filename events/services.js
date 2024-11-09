@@ -7,7 +7,7 @@ module.exports = {
 
         const { customId, values } = interaction;
 
-        if (customId === 'services') {
+        if (customId === 'service') {
             const selectedValue = values[0];
             let embed;
 
@@ -30,37 +30,42 @@ module.exports = {
             } else if (selectedValue === 'tc') {
                 embed = new EmbedBuilder()
                 .setColor(`#2F3136`)
-                    .setDescription(`We only a`)
-                    .setColor(`#2F3136`)
-                    .setFooter({ 
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                    });
-            } else if (selectedValue === 'htgh') {
-                embed = new EmbedBuilder()
-                .setTitle(`How to Apply for a Position at Section Designs`)
                     .setDescription(`
+Before you start using our services, please read our Terms and Conditions carefully.
 
-To express your interest in joining Section Designs, please follow these steps:
-
-1. **Open a Ticket**: Begin by opening a ticket in the designated channel <#1304462890627104778>.
-   
-2. **Notify Us of Your Intent**: Once the ticket is open, kindly inform us of your desire to be hired by providing the relevant details.
-
-**Please Note**: It is essential that candidates possess a solid understanding of Discord customizations, including the creation of bots and templates.
-
-Thank you for your interest in becoming a part of Section Designs!
-
-`)
+- We are committed to providing high-quality services to our clients. If our services do not meet your expectations, we can replace the service at no cost.
+- We currently accept **Robux** payments only. More payment methods will be available in the future.
+- We have a **30-day** refund policy. Refund requests made after 30 days will not be accepted.`)
                     .setColor(`#2F3136`)
                     .setFooter({ 
                         text: 'Section Designs',
                         iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
                     });
-            } else if (selectedValue === 'notused') {
+            } else if (selectedValue === 'cp') {
                 embed = new EmbedBuilder()
-                    .setDescription(`notusedlil bro`)
-                    .setColor('#aed191')
+                    .setDescription(`**coming soon**`)  
+                    .setColor(`#2F3136`)
+                    .setFooter({ 
+                        text: 'Section Designs',
+                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                    });
+            } else if (selectedValue === 'lp') {
+                embed = new EmbedBuilder()
+                    .setDescription(`coming soon`)
+                    .setColor(`#2F3136`)
+                    .setFooter({ 
+                        text: 'Section Designs',
+                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                    });
+            }
+            else if (selectedValue === 'gp') {
+                embed = new EmbedBuilder()
+                .setDescription(`The prices below are the prices for the graphics services.`)
+                .setFields([
+                    { name: 'Logo', value: '75', inline: true },
+                    { name: 'Banner', value: '100', inline: true }, 
+                ])
+                    .setColor(`#2F3136`)
                     .setFooter({ 
                         text: 'Section Designs',
                         iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'

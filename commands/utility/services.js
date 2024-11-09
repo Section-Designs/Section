@@ -21,7 +21,7 @@ module.exports = {
        const embed = new EmbedBuilder()
             .setTitle('Services')
             .setColor(`#2F3136`)
-            .setDescription(`**Welcome to the Section Designs service section. This is where you can check all the information like pricing for **discord services**,**clothing pricing** etc. Ensure you have read the terms and conditions before making an order. We hope you find our services useful and enjoyable. If you have any questions or concerns, please don't hesitate to reach out to us.**`);
+            .setDescription(`Welcome to the Section Designs service section. This is where you can check all the information like pricing for **discord services**,**clothing pricing** etc. Ensure you have read the terms and conditions before making an order. We hope you find our services useful and enjoyable. If you have any questions or concerns, please don't hesitate to reach out to us.`);
 
         // Create the select menu
         const selectMenu = new StringSelectMenuBuilder()

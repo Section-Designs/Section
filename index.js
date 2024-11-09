@@ -6,7 +6,7 @@ const { Routes } = require("discord-api-types/v9");
 
 const { token } = process.env;
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
 client.commands = new Collection();
 client.commandArray = [];
 
@@ -52,6 +52,18 @@ const handleCommands = async () => {
 
 client.handleEvents = handleEvents;
 client.handleCommands = handleCommands;
+
+// Auto-assign role to new members
+client.on('guildMemberAdd', async (member) => {
+  const roleId = '1304460601866846320'; // Role ID to auto-assign
+
+  try {
+    await member.roles.add(roleId);
+    console.log(`Assigned role ${roleId} to ${member.user.tag}`);
+  } catch (error) {
+    console.error(`Failed to assign role to ${member.user.tag}:`, error);
+  }
+});
 
 (async () => {
   await client.handleEvents();
