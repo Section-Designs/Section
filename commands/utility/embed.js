@@ -16,11 +16,6 @@ module.exports = {
             .setTitle('Send Embed');
 
         // Create title input
-        const titleInput = new TextInputBuilder()
-            .setCustomId('embedTitle')
-            .setLabel('Embed Title')
-            .setStyle(TextInputStyle.Short)
-            .setRequired(true);
 
         // Create description input
         const descriptionInput = new TextInputBuilder()
@@ -29,9 +24,15 @@ module.exports = {
             .setStyle(TextInputStyle.Paragraph)
             .setRequired(true);
 
+            const titleInput = new TextInputBuilder()
+            .setCustomId('embedTitle')
+            .setLabel('Embed Title')
+            .setStyle(TextInputStyle.Short)
+            .setRequired(false);
+
         // Create action rows for the inputs
-        const row1 = new ActionRowBuilder().addComponents(titleInput);
-        const row2 = new ActionRowBuilder().addComponents(descriptionInput);
+        const row1 = new ActionRowBuilder().addComponents(descriptionInput);
+        const row2 = new ActionRowBuilder().addComponents(titleInput);
 
         // Add the inputs to the modal
         modal.addComponents(row1, row2);
