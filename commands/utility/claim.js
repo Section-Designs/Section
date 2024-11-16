@@ -29,10 +29,13 @@ module.exports = {
 
         // Create the embed message
         const claimEmbed = new EmbedBuilder()
-            .setColor('#2F3136')
             .setTitle('Ticket Claimed')
             .setDescription(`The ticket **${ticketChannel.name}** has been successfully claimed by <@${interaction.user.id}>.`)
-            .setFooter({ text: `Claimed by: ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
+            .setColor(`#4b5afa`)
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
 
         // Send the embed message as the final response
         await interaction.editReply({ embeds: [claimEmbed] });

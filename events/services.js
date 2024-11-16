@@ -22,41 +22,40 @@ module.exports = {
                         { name: 'Embeds', value: '400', inline: true },
 
                     ])
-                    .setColor(`#2F3136`)
-                    .setFooter({ 
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                    });
+                    .setColor(`#4b5afa`)
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
             } else if (selectedValue === 'tc') {
                 embed = new EmbedBuilder()
-                .setColor(`#2F3136`)
                     .setDescription(`
 Before you start using our services, please read our Terms and Conditions carefully.
 
 - We are committed to providing high-quality services to our clients. If our services do not meet your expectations, we can replace the service at no cost.
 - We currently accept **Robux** payments only. More payment methods will be available in the future.
 - We have a **30-day** refund policy. Refund requests made after 30 days will not be accepted.`)
-                    .setColor(`#2F3136`)
-                    .setFooter({ 
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                    });
+.setColor(`#4b5afa`)
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
             } else if (selectedValue === 'cp') {
                 embed = new EmbedBuilder()
                     .setDescription(`**coming soon**`)  
-                    .setColor(`#2F3136`)
+                    .setColor(`#4b5afa`)
                     .setFooter({ 
                         text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                        iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
                     });
             } else if (selectedValue === 'lp') {
                 embed = new EmbedBuilder()
                     .setDescription(`coming soon`)
-                    .setColor(`#2F3136`)
-                    .setFooter({ 
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                    });
+                    .setColor(`#4b5afa`)
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
             }
             else if (selectedValue === 'gp') {
                 embed = new EmbedBuilder()
@@ -65,11 +64,11 @@ Before you start using our services, please read our Terms and Conditions carefu
                     { name: 'Logo', value: '75', inline: true },
                     { name: 'Banner', value: '100', inline: true }, 
                 ])
-                    .setColor(`#2F3136`)
-                    .setFooter({ 
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                    });
+                .setColor(`#4b5afa`)
+                .setFooter({ 
+                    text: 'Section Designs',
+                    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+                });
             }
 
             // Send the selected embed

@@ -1,29 +1,28 @@
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, Permissions } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, Permissions, PermissionsBitField } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('ticketsupport')
+    .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator)
     .setDescription('Open a ticket support dropdown.'),
   async execute(interaction) {
-    // Check if the user has admin permissions
-    if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
-      return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
-    }
 
-    const banner = "https://cdn.discordapp.com/attachments/1261011896950329374/1304520511325343815/4.png?ex=672fb0e6&is=672e5f66&hm=9d61b076bec5868a268c021169a46e6e5fe2da26dba4abbe7c2e09e2de27a461&"
+    const banner = "https://cdn.discordapp.com/attachments/1304492271529627668/1307294158192377896/2_2.png?ex=6739c80f&is=6738768f&hm=d07a6f9770e267ffb327ca24ff9245adbe9aca49e4d61d1606f456897dd92950&"
 
     // Acknowledge the interaction immediately
     await interaction.deferReply(); 
 
     // Create the embed message
     const embed = new EmbedBuilder()
-      .setColor(`#2F3136`)
       .setTitle('Ticket Creation')
-      .setDescription('> Please select the appropriate option for the ticket you wish to open. Opening a ticket for the wrong reason or for trolling purposes will lead to necessary consequences. We appreciate your patience, as our staff may be attending to multiple inquiries at once.')
-      .setFooter({ 
-        text: 'Section Designs',
-        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-    });
+      .setDescription(`> Before opening a ticket ensure you have your reasons for opening the ticket. The ticket will be deleted after 24 hours of inactivity. Ensure you pick the right ticket selection. Failing to do so would result in a server ban.
+        
+        > Trolling tickets are not allowed. Please wait for our team to respond to your ticket.`)
+      .setColor(`#4b5afa`)
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
 
     // Create the dropdown menu
     const row = new ActionRowBuilder()
@@ -46,7 +45,7 @@ module.exports = {
       );
 
     // Send the embed with the dropdown to the specified channel
-    const supportChannel = interaction.guild.channels.cache.get('1304462890627104778');
+    const supportChannel = interaction.guild.channels.cache.get('1307292117218885644');
     if (supportChannel) {
       await supportChannel.send({ files: [banner], embeds: [embed], components: [row] });
       await interaction.followUp({ content: 'The support ticket options have been sent.', ephemeral: true });

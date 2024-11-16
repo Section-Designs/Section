@@ -9,7 +9,7 @@ module.exports = {
         // Acknowledge the interaction immediately
         await interaction.deferReply({ ephemeral: true });
 
-        const banner = "https://cdn.discordapp.com/attachments/1261011896950329374/1304520511610421338/1.png?ex=672fb0e6&is=672e5f66&hm=c85d2e00734d7cc1ce62f4e70fc147da88bd940ff7f66a71cc13c4c87f2619b3&"
+        const banner = "https://cdn.discordapp.com/attachments/1304862698596601946/1307290812345880688/sectionbanners.png?ex=6739c4f1&is=67387371&hm=99ac0eccad72fc2a16fd6113a7c3313887e0237d2f60adc9997cfded7fffa55c&"
         const targetChannelId = '1304460998824169512';
         const targetChannel = interaction.client.channels.cache.get(targetChannelId);
 
@@ -18,44 +18,28 @@ module.exports = {
         }
 
         // Define each embed with detailed rules
-        const embeds = [
-            new EmbedBuilder()
-                .setTitle('Server Regulations')
-                .setColor(`#2F3136`)
-                .setDescription(`Listed below are all the regulations of the server. If you have any questions or concerns, please contact the staff team.`),
+      const embed1 = new EmbedBuilder()
+            .setTitle('Section Designs')
+            .setColor(`#4b5afa`)
+            .setDescription(`Welcome to Section Designs Section Deisgns is a discord server made to deisgn your needed. Ranging from graphic designs all the way to web design. We hope you find our services useful and enjoyable. If you have any questions or concerns, please don't hesitate to reach out to us.`)
 
-            new EmbedBuilder()
-                .setTitle('Rule 1: Respect Everyone')
-                .setColor(`#2F3136`)
-                .setDescription(`Respect is the foundation of our community. Every member deserves to be treated with dignity and consideration, regardless of their background or opinions. Harassment, hate speech, or bullying will not be tolerated. We encourage open dialogue and differing viewpoints, but it’s essential to express disagreements respectfully.`),
-
-            new EmbedBuilder()
-                .setTitle('Rule 2: Age Requirement')
-                .setColor(`#2F3136`)
-                .setDescription(`Members must be at least 13 years old to participate in the server. Any member found to be under the age requirement will be banned and may appeal their ban upon reaching the age requirement.`),
-
-            new EmbedBuilder()
-                .setTitle('Rule 3: No Spamming')
-                .setColor(`#2F3136`)
-                .setDescription(`Maintaining a clean and organized communication environment is essential for fostering meaningful interactions. Members are expected to refrain from sending repetitive messages that do not contribute value to the discussion.`),
-
-            new EmbedBuilder()
-                .setTitle('Rule 4: No Advertising')
-                .setColor(`#2F3136`)
-                .setDescription(`To maintain a focused environment, we prohibit all forms of advertising without explicit permission from the staff team. Unsolicited advertising can create distractions and undermine our community.`),
-
-            new EmbedBuilder()
-                .setTitle('Rule 5: Privacy Matters')
-                .setColor(`#2F3136`)
-                .setDescription(`Respecting the privacy of all members is paramount. Safeguard your own privacy and do not share personal information without consent. Report any privacy violations to staff immediately.`),
-
-        ];
-
+        const embed2 = new EmbedBuilder()
+        .setDescription(`Section Designs own the offical Looter bot and the Botxeprts Bot. News about those 2 bots will be placed in this server and devloped by our devlopemnt team. Packages for the bot's will be included.`)
+        .setColor(`#4b5afa`)
+                    .setFooter({
+                        text: 'Section Designs',
+                        iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096',
+                    });
         // Create the select menu
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('server_information')
             .setPlaceholder('Select an option')
             .addOptions([
+                {
+                    label: 'Server Information',
+                    description: 'Information about the server',
+                    value: 'si',
+                },
                 {
                     label: 'Server Website',
                     description: 'The offical Section Design website',
@@ -77,7 +61,7 @@ module.exports = {
         const row = new ActionRowBuilder().addComponents(selectMenu);
 
         // Send all embeds and the select menu to the target channel
-        await targetChannel.send({files: [banner], embeds, components: [row] });
+        await targetChannel.send({files: [banner], embeds: [embed1, embed2], components: [row] });
 
         // Acknowledge the command
         await interaction.editReply({ content: 'Server rules have been sent to the channel.', ephemeral: true });

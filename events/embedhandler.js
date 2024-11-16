@@ -9,12 +9,12 @@ module.exports = {
 
             // Create the embed
             const embed = new EmbedBuilder()
-                .setColor('#2F3136')
                 .setDescription(description)
-                .setFooter({ 
-                    text: 'Section Designs',
-                    iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                });
+                setColor(`#4b5afa`)
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
 
             // Set title only if provided
             if (title) {

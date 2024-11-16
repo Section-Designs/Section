@@ -105,12 +105,12 @@ module.exports = {
                         { name: 'When Needed', value: reason },
                         { name: 'Notes', value: proof },
                     ])
-                    .setColor(`#2F3136`)
-                    .setImage("https://cdn.discordapp.com/attachments/1261011896950329374/1304520511069487155/3.png?ex=672fb0e6&is=672e5f66&hm=32033f63d623afc3faec5f47f5b893777b7dce66644b6b10fbc7ac5025c62e23&")
-                    .setFooter({ 
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                    });
+                    .setColor(`#4b5afa`)
+.setImage("https://cdn.discordapp.com/attachments/1304492271529627668/1307297439094538400/2_3.png?ex=6739cb1d&is=6738799d&hm=cbb613f0797836c8ade15115707b568e4c09823f57f14c98675e955cb7df008b&")
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
 
                 const purchaseCloseButton = new ButtonBuilder()
                     .setCustomId('closePurchaseTicket')
@@ -125,12 +125,11 @@ module.exports = {
                     const logEmbed = new EmbedBuilder()
                         .setTitle('Ticket Opened')
                         .setDescription(`A new member report ticket has been open by <@${interaction.user.id}> in <#${purchaseChannel.id}>.\n**Member Reporting:** ${member}\n**Reason:** ${reason}`)
-                        .setColor(`#2F3136`)
+                        .setColor(`#4b5afa`)
                         .setFooter({ 
                             text: 'Section Designs',
-                            iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                            iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
                         });
-
                     await logChannel.send({ embeds: [logEmbed] });
                 }
 
@@ -168,12 +167,12 @@ module.exports = {
                     .setFields([
                         { name: 'Reason', value: reason },
                     ])
-                    .setColor(`#2F3136`)
-                    .setImage("https://cdn.discordapp.com/attachments/1261011896950329374/1304520510796726333/2.png?ex=672fb0e6&is=672e5f66&hm=8488cdabc46fde63eb1c55c6a528d522101ae025c1076990313f15a8a5b0e89b&")
-                    .setFooter({ 
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                    });
+                    .setImage("https://cdn.discordapp.com/attachments/1304492271529627668/1307297713666392094/2_4.png?ex=6739cb5f&is=673879df&hm=b94635f2f972372bfd5812996e7be080eaa8700b751fda40538e35b177731c0a&")
+                    .setColor(`#4b5afa`)
+                        .setFooter({ 
+                            text: 'Section Designs',
+                            iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+                        });
                 const supportCloseButton = new ButtonBuilder()
                     .setCustomId('closeTicket')
                     .setLabel('Close')
@@ -187,10 +186,10 @@ module.exports = {
                     const logEmbed = new EmbedBuilder()
                         .setTitle('Ticket Opened')
                         .setDescription(`A new support ticket has been opened by <@${interaction.user.id}> in <#${supportChannel.id}>.\n**Reason:** ${reason}`)
-                        .setColor(`#2F3136`)
+                        .setColor(`#4b5afa`)
                         .setFooter({ 
                             text: 'Section Designs',
-                            iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                            iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
                         });
 
                     await logChannel.send({ embeds: [logEmbed] });
@@ -206,10 +205,10 @@ module.exports = {
                 const confirmationEmbed = new EmbedBuilder()
                     .setTitle('Close Ticket')
                     .setDescription('Are you sure you want to close this ticket? This action cannot be undone.')
-                    .setColor(`#2F3136`)
+                    .setColor(`#4b5afa`)
                     .setFooter({ 
                         text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                        iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
                     });
                     
                     
@@ -227,10 +226,10 @@ module.exports = {
                 // Send the ephemeral embed stating the ticket will close in 5 seconds
                 const closingEmbed = new EmbedBuilder()
                     .setDescription('The ticket will close in 5 seconds.')
-                    .setColor(`#2F3136`)
+                    .setColor(`#4b5afa`)
                     .setFooter({ 
                         text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                        iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
                     });
             
                 await interaction.reply({ embeds: [closingEmbed], ephemeral: true });
@@ -271,11 +270,11 @@ module.exports = {
                         **Open Time:** ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}
             
             > If you have any further questions, please feel free to open a new ticket.`)
-                .setColor('#2F3136')
-                .setFooter({ 
-                    text: 'Section Designs',
-                    iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
-                });
+            .setColor(`#4b5afa`)
+            .setFooter({ 
+                text: 'Section Designs',
+                iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+            });
             
                 // Send DM with the transcript
                 await ticketOwner.send({ embeds: [closeEmbed], files: [transcriptAttachment] }).catch(err => console.error("Failed to send DM: ", err));
@@ -288,7 +287,6 @@ module.exports = {
                 const logChannel = interaction.guild.channels.cache.get(logChannelId);
                 if (logChannel) {
                     const logEmbed = new EmbedBuilder()
-                        .setColor('#2F3136')
                         .setTitle('Ticket Closed')
                         .setDescription(`> Ticket has been successfully closed. Please find below the information and above the transcript.`)
                         .setFields([
@@ -296,9 +294,10 @@ module.exports = {
                             { name: 'Ticket Owner', value: `<@${ticketOwner.id}>` },
                             { name: 'Open Date', value: `${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}` }
                         ])
+                        .setColor(`#4b5afa`)
                         .setFooter({ 
                             text: 'Section Designs',
-                            iconURL: 'https://cdn.discordapp.com/attachments/1261011896950329374/1304516753736470538/SD.png?ex=672fad66&is=672e5be6&hm=5d893f50eb9ee7f8442a52b392361b94d5057edc4c6a45c93bcc0f420a60309a&'
+                            iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
                         });
             
                     await logChannel.send({ embeds: [logEmbed], files: [transcriptAttachment] });

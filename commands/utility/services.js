@@ -9,8 +9,8 @@ module.exports = {
         // Acknowledge the interaction immediately
         await interaction.deferReply({ ephemeral: true });
 
-        const targetChannelId = '1304461959726633061';
-        const banner = "https://cdn.discordapp.com/attachments/1261011896950329374/1304527995137953862/SD.png?ex=672fb7de&is=672e665e&hm=bb39108c4eb8db8f49feff14ded7965246f9cdf7905b52e336a22c3e0803f438&"
+        const targetChannelId = '1307293226322890766';
+        const banner = "https://cdn.discordapp.com/attachments/1304492271529627668/1307293142004797520/2_1.png?ex=6739c71d&is=6738759d&hm=aad15ebc7eedc5a296c27d1e84cf6d0cb83e0db64f1f4f715f10081ae75b4485&"
         const targetChannel = interaction.client.channels.cache.get(targetChannelId);
 
         if (!targetChannel) {
@@ -20,8 +20,12 @@ module.exports = {
         // Define each embed with detailed rules
        const embed = new EmbedBuilder()
             .setTitle('Services')
-            .setColor(`#2F3136`)
-            .setDescription(`Welcome to the Section Designs service section. This is where you can check all the information like pricing for **discord services**,**clothing pricing** etc. Ensure you have read the terms and conditions before making an order. We hope you find our services useful and enjoyable. If you have any questions or concerns, please don't hesitate to reach out to us.`);
+            .setDescription(`Welcome to the Section Designs service section. This is where you can check all the information like pricing for **discord services**,**clothing pricing** etc. Ensure you have read the terms and conditions before making an order. We hope you find our services useful and enjoyable. If you have any questions or concerns, please don't hesitate to reach out to us.`)
+            .setColor(`#4b5afa`)
+.setFooter({ 
+    text: 'Section Designs',
+    iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
+});
 
         // Create the select menu
         const selectMenu = new StringSelectMenuBuilder()
