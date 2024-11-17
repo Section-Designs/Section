@@ -6,7 +6,7 @@ module.exports = {
         .setDefaultMemberPermissions(0)
         .setDescription('Display the services'),
     async execute(interaction) {
-        // Acknowledge the interaction immediately
+
         await interaction.deferReply({ ephemeral: true });
 
         const targetChannelId = '1307293226322890766';
@@ -17,7 +17,7 @@ module.exports = {
             return await interaction.editReply({ content: 'Channel not found!', ephemeral: true });
         }
 
-        // Define each embed with detailed rules
+
        const embed = new EmbedBuilder()
             .setTitle('Services')
             .setDescription(`Welcome to the Section Designs service section. This is where you can check all the information like pricing for **discord services**,**clothing pricing** etc. Ensure you have read the terms and conditions before making an order. We hope you find our services useful and enjoyable. If you have any questions or concerns, please don't hesitate to reach out to us.`)
@@ -59,13 +59,13 @@ module.exports = {
                 }
             ]);
 
-        // Create action row for the select menu
+  
         const row = new ActionRowBuilder().addComponents(selectMenu);
 
-        // Send all embeds and the select menu to the target channel
+       
         await targetChannel.send({files: [banner], embeds: [embed], components: [row] });
 
-        // Acknowledge the command
+      
         await interaction.editReply({ content: 'Server rules have been sent to the channel.', ephemeral: true });
     },
 };

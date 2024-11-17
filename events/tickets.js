@@ -6,9 +6,9 @@ const discordTranscripts = require('discord-html-transcripts');
 module.exports = {
     name: Events.InteractionCreate,
     async execute(interaction) {
-        const logChannelId = '1304485095498977351'; // Channel ID for logging
+        const logChannelId = '1304485095498977351'; 
 
-        // Handle dropdown selection for support tickets and bot purchases
+      
         if (interaction.isStringSelectMenu()) {
             if (interaction.customId === 'supportOptions') {
                 const selectedValue = interaction.values[0];
@@ -91,7 +91,7 @@ module.exports = {
                             allow: [PermissionsBitField.Flags.ViewChannel],
                         },
                         {
-                            id: '1304460559751581800', // Bot Purchase role
+                            id: '1304460559751581800',
                             allow: [PermissionsBitField.Flags.ViewChannel],
                         },
                     ],
@@ -119,7 +119,7 @@ module.exports = {
 
                 await purchaseChannel.send({ content: `<@${interaction.user.id}>, <@&1304460559751581800>`, embeds: [purchaseEmbed], components: [new ActionRowBuilder().addComponents(purchaseCloseButton)] });
 
-                // Log the ticket opening
+              
                 const logChannel = interaction.guild.channels.cache.get(logChannelId);
                 if (logChannel) {
                     const logEmbed = new EmbedBuilder()
@@ -155,7 +155,7 @@ module.exports = {
                             allow: [PermissionsBitField.Flags.ViewChannel],
                         },
                         {
-                            id: '1304460386002796564', // Support role
+                            id: '1304460386002796564',
                             allow: [PermissionsBitField.Flags.ViewChannel],
                         },
                     ],
@@ -180,7 +180,7 @@ module.exports = {
 
                 await supportChannel.send({ content: `<@${interaction.user.id}>`, embeds: [supportEmbed], components: [new ActionRowBuilder().addComponents(supportCloseButton)] });
 
-                // Log the ticket opening
+             
                 const logChannel = interaction.guild.channels.cache.get(logChannelId);
                 if (logChannel) {
                     const logEmbed = new EmbedBuilder()
@@ -223,7 +223,6 @@ module.exports = {
             }
 
             if (interaction.customId === 'confirmClose') {
-                // Send the ephemeral embed stating the ticket will close in 5 seconds
                 const closingEmbed = new EmbedBuilder()
                     .setDescription('The ticket will close in 5 seconds.')
                     .setColor(`#4b5afa`)
@@ -234,12 +233,11 @@ module.exports = {
             
                 await interaction.reply({ embeds: [closingEmbed], ephemeral: true });
             
-                // Wait for 5 seconds
+ 
                 await new Promise(resolve => setTimeout(resolve, 5000));
             
                 const ticketChannel = interaction.channel;
-            
-                // Create a transcript of the ticket channel
+
                 const transcriptAttachment = await discordTranscripts.createTranscript(ticketChannel, {
                     limit: 20000000, // Fetch all messages
                     returnType: 'attachment', // Return type can be 'buffer' | 'string' | 'attachment'
@@ -256,13 +254,13 @@ module.exports = {
                     hydrate: true, // Hydrate the HTML server-side
                     filter: (message) => {
                         console.log(`Message fetched: ${message.content}`); // Debug log for messages
-                        return true; // Include all messages
+                        return true;
                     }
                 });
             
                 const ticketOwner = interaction.user;
             
-                // Create the embed for the DM
+
                 const closeEmbed = new EmbedBuilder()
                     .setTitle('Ticket Closed')
                     .setDescription(`> Hello <@${ticketOwner.id}>, your ticket has been closed. Please find below the information and above the transcript.
@@ -276,14 +274,14 @@ module.exports = {
                 iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
             });
             
-                // Send DM with the transcript
+             
                 await ticketOwner.send({ embeds: [closeEmbed], files: [transcriptAttachment] }).catch(err => console.error("Failed to send DM: ", err));
             
-                // Delete the ticket channel
+       
                 await ticketChannel.send('This ticket has been closed.');
                 await ticketChannel.delete();
             
-                // Log the ticket closure
+            
                 const logChannel = interaction.guild.channels.cache.get(logChannelId);
                 if (logChannel) {
                     const logEmbed = new EmbedBuilder()

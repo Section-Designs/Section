@@ -17,7 +17,7 @@ module.exports = {
             return await interaction.editReply({ content: 'Channel not found!', ephemeral: true });
         }
 
-        // Define each embed with detailed rules
+ 
       const embed1 = new EmbedBuilder()
             .setTitle('Section Designs')
             .setColor(`#4b5afa`)
@@ -30,7 +30,7 @@ module.exports = {
                         text: 'Section Designs',
                         iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096',
                     });
-        // Create the select menu
+
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('server_information')
             .setPlaceholder('Select an option')
@@ -57,13 +57,12 @@ module.exports = {
                 }
             ]);
 
-        // Create action row for the select menu
         const row = new ActionRowBuilder().addComponents(selectMenu);
 
-        // Send all embeds and the select menu to the target channel
+      
         await targetChannel.send({files: [banner], embeds: [embed1, embed2], components: [row] });
 
-        // Acknowledge the command
+
         await interaction.editReply({ content: 'Server rules have been sent to the channel.', ephemeral: true });
     },
 };

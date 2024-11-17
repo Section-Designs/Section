@@ -2,32 +2,43 @@ require("dotenv").config();
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
+const { Routes } = require("discord-api-types/v10");
 
 const { token } = process.env;
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.MessageContent, // Add MessageContent if you're handling message-based interactions
+  ],
+});
+
 client.commands = new Collection();
 client.commandArray = [];
 
-// Ready event to log bot information
-client.once('ready', () => {
-  // console.log(`${client.user?.username} - (${client.user?.id})`); // Log bot username and ID when ready
-});
 
+
+// Event handler
 const handleEvents = async () => {
-  const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
+  const eventFiles = fs
+    .readdirSync("./events")
+    .filter((file) => file.endsWith(".js"));
   for (const file of eventFiles) {
     const event = require(`./events/${file}`);
-    if (event.once) client.once(event.name, (...args) => event.execute(...args, client));
+    if (event.once)
+      client.once(event.name, (...args) => event.execute(...args, client));
     else client.on(event.name, (...args) => event.execute(...args, client));
   }
 };
 
+// Command handler
 const handleCommands = async () => {
-  const commandFolders = fs.readdirSync('./commands');
+  const commandFolders = fs.readdirSync("./commands");
   for (const folder of commandFolders) {
-    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
+    const commandFiles = fs
+      .readdirSync(`./commands/${folder}`)
+      .filter((file) => file.endsWith(".js"));
 
     for (const file of commandFiles) {
       const command = require(`./commands/${folder}/${file}`);
@@ -36,26 +47,24 @@ const handleCommands = async () => {
     }
   }
 
-  const clientId = "1304483049995767878"; 
-  const guildId = "1304459131083554826"; 
-  const rest = new REST({ version: '9' }).setToken(token);
+  const clientId = "1304483049995767878"; // Your bot's client ID
+  const guildId = "1304459131083554826"; // Your test guild ID
+  const rest = new REST({ version: "10" }).setToken(token); // Use v10
 
   try {
+    // Register commands using the updated REST API for v14
     await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
       body: client.commandArray,
     });
     console.log("Slash commands uploaded");
   } catch (error) {
-    console.error(error);
+    console.error("Error uploading slash commands:", error);
   }
 };
 
-client.handleEvents = handleEvents;
-client.handleCommands = handleCommands;
-
 // Auto-assign role to new members
-client.on('guildMemberAdd', async (member) => {
-  const roleId = '1304460601866846320'; // Role ID to auto-assign
+client.on("guildMemberAdd", async (member) => {
+  const roleId = "1304460601866846320"; // Role ID to auto-assign
 
   try {
     await member.roles.add(roleId);
@@ -65,9 +74,9 @@ client.on('guildMemberAdd', async (member) => {
   }
 });
 
+// Initialize everything and login
 (async () => {
-  await client.handleEvents();
-  await client.handleCommands();
+  await handleEvents();  // Directly call the function to handle events
+  await handleCommands(); // Directly call the function to handle commands
+  client.login(token);
 })();
-
-client.login(token);
