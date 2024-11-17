@@ -163,7 +163,7 @@ module.exports = {
 
                 const supportEmbed = new EmbedBuilder()
                     .setTitle('Support Ticket')
-                    .setDescription(`Hello <@${interaction.user.id}>, your support ticket has been opened. Please wait for a staff member to come and claim your ticket.`)
+                    .setDescription('<a:waving:1307516449887223850> Hi <@${interaction.user.id}>,  Welcome to Section Designs Support! Kindly review our brief guidelines below to ensure your ticket is handled as smoothly as possible.`)
                     .setFields([
                         { name: 'Reason', value: reason },
                     ])
