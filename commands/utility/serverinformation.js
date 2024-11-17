@@ -9,9 +9,10 @@ module.exports = {
         // Acknowledge the interaction immediately
         await interaction.deferReply({ ephemeral: true });
 
-        const banner = "https://media.discordapp.net/attachments/1261011896950329374/1307715185405853736/section_dashboard.png?format=webp&quality=lossless";
+        const bannerURL = "https://media.discordapp.net/attachments/1261011896950329374/1307715185405853736/section_dashboard.png?format=webp&quality=lossless";
         const imageURL = "https://media.discordapp.net/attachments/1261011896950329374/1307702539457658991/Section_Designs.png?format=webp&quality=lossless";
-        const targetChannelId = '1305047482702499850';
+        const channelid = interaction.channel.id;
+        const targetChannelId = `${channelid}`;
         const targetChannel = interaction.client.channels.cache.get(targetChannelId);
 
         if (!targetChannel) {
@@ -21,18 +22,18 @@ module.exports = {
         // Embed 1
         const embed1 = new EmbedBuilder()
             .setColor(5841132)
-            .setImage(banner);
+            .setImage(bannerURL);
 
-        // Embed 2
+        // Embed 2 (with Support Desk removed)
         const embed2 = new EmbedBuilder()
             .setTitle('<:Sectiondesigns:1307714260691976202> Section Dashboard')
             .setDescription(
                 `At **Section**, we pride ourselves on delivering exceptional creativity, premium quality, and professional designs. Our services include custom liveries, branding designing, bot developing, website designing, server setups, and clothing designs.\n\n` +
                 `• Use this dashboard to access our Regulations, submit Applications, and engage with our Roblox Group.\n\n` +
-                `<:linewhite:1307716962796834837> `.repeat(5) + // Reduced repetitions
-                `\n\n<:Sectiondesigns:1307714260691976202> \`Executive Team\`\n` +
-                `<@1114487029925937232>\n` + // Mention key team members without repeating
-                `<#1307292117218885644>\n<@803612750718697493>\n<@1132738644927582321>`
+                `<:linewhite:1307716962796834837> `.repeat(19) + `\n\n` +
+                `<:Sectiondesigns:1307714260691976202>  \`Executive Team\` <:Blank:1307718151848333364><:Blank:1307718151848333364><:Blank:1307718151848333364><:Blank:1307718151848333364> ` +
+                `<@1114487029925937232> <:Blank:1307718151848333364><:Blank:1307718151848333364><:Blank:1307718151848333364><:Blank:1307718151848333364>\n` +
+                `<@803612750718697493>\n<@1132738644927582321>`
             )
             .setColor(5841132)
             .setImage(imageURL);

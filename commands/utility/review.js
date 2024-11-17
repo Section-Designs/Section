@@ -27,14 +27,23 @@ module.exports = {
         .setPlaceholder('0/10')
         .setStyle(TextInputStyle.Short)
         .setRequired(true)
-        .setMaxLength(5); 
+        .setMaxLength(5);
+
+      const designer = new TextInputBuilder()
+        .setCustomId('designerInput')
+        .setLabel('Designer')
+        .setPlaceholder('Who was your designer')
+        .setStyle(TextInputStyle.Short)
+        .setRequired(true)
+        .setMaxLength(50);
 
      
       const row1 = new ActionRowBuilder().addComponents(reviewInput);
       const row2 = new ActionRowBuilder().addComponents(rateInput);
+      const row3 = new ActionRowBuilder().addComponents(designer);
 
     
-      modal.addComponents(row1, row2);
+      modal.addComponents(row1, row2, row3);
 
     
       await interaction.showModal(modal);
