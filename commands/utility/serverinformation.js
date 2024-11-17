@@ -9,60 +9,62 @@ module.exports = {
         // Acknowledge the interaction immediately
         await interaction.deferReply({ ephemeral: true });
 
-        const banner = "https://cdn.discordapp.com/attachments/1304862698596601946/1307290812345880688/sectionbanners.png?ex=6739c4f1&is=67387371&hm=99ac0eccad72fc2a16fd6113a7c3313887e0237d2f60adc9997cfded7fffa55c&"
-        const targetChannelId = '1304460998824169512';
+        const banner = "https://media.discordapp.net/attachments/1261011896950329374/1307715185405853736/section_dashboard.png?format=webp&quality=lossless";
+        const imageURL = "https://media.discordapp.net/attachments/1261011896950329374/1307702539457658991/Section_Designs.png?format=webp&quality=lossless";
+        const targetChannelId = '1305047482702499850';
         const targetChannel = interaction.client.channels.cache.get(targetChannelId);
 
         if (!targetChannel) {
             return await interaction.editReply({ content: 'Channel not found!', ephemeral: true });
         }
 
- 
-      const embed1 = new EmbedBuilder()
-            .setTitle('Section Designs')
-            .setColor(`#4b5afa`)
-            .setDescription(`Welcome to Section Designs Section Deisgns is a discord server made to deisgn your needed. Ranging from graphic designs all the way to web design. We hope you find our services useful and enjoyable. If you have any questions or concerns, please don't hesitate to reach out to us.`)
+        // Embed 1
+        const embed1 = new EmbedBuilder()
+            .setColor(5841132)
+            .setImage(banner);
 
+        // Embed 2
         const embed2 = new EmbedBuilder()
-        .setDescription(`Section Designs own the offical Looter bot and the Botxeprts Bot. News about those 2 bots will be placed in this server and devloped by our devlopemnt team. Packages for the bot's will be included.`)
-        .setColor(`#4b5afa`)
-                    .setFooter({
-                        text: 'Section Designs',
-                        iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096',
-                    });
+            .setTitle('<:Sectiondesigns:1307714260691976202> Section Dashboard')
+            .setDescription(
+                `At **Section**, we pride ourselves on delivering exceptional creativity, premium quality, and professional designs. Our services include custom liveries, branding designing, bot developing, website designing, server setups, and clothing designs.\n\n` +
+                `• Use this dashboard to access our Regulations, submit Applications, and engage with our Roblox Group.\n\n` +
+                `<:linewhite:1307716962796834837> `.repeat(5) + // Reduced repetitions
+                `\n\n<:Sectiondesigns:1307714260691976202> \`Executive Team\`\n` +
+                `<@1114487029925937232>\n` + // Mention key team members without repeating
+                `<#1307292117218885644>\n<@803612750718697493>\n<@1132738644927582321>`
+            )
+            .setColor(5841132)
+            .setImage(imageURL);
 
+        // Select Menu
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('server_information')
             .setPlaceholder('Select an option')
             .addOptions([
                 {
-                    label: 'Server Information',
-                    description: 'Information about the server',
-                    value: 'si',
-                },
-                {
                     label: 'Server Website',
-                    description: 'The offical Section Design website',
+                    description: 'The official Section Design website',
                     value: 'sw',
                 },
                 {
                     label: 'Server Invite Link',
-                    description: 'The offical discord server invite',
+                    description: 'The official Discord server invite',
                     value: 'sil',
                 },
                 {
-                    label: 'How to get hired.',
-                    description: 'How to get hired.',
+                    label: 'How to get hired',
+                    description: 'Learn how to join our team',
                     value: 'htgh',
-                }
+                },
             ]);
 
         const row = new ActionRowBuilder().addComponents(selectMenu);
 
-      
-        await targetChannel.send({files: [banner], embeds: [embed1, embed2], components: [row] });
+        // Send the embeds and components
+        await targetChannel.send({ embeds: [embed1, embed2], components: [row] });
 
-
-        await interaction.editReply({ content: 'Server rules have been sent to the channel.', ephemeral: true });
+        // Confirm reply
+        await interaction.editReply({ content: 'Server information has been sent to the channel.', ephemeral: true });
     },
 };
