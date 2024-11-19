@@ -7,7 +7,8 @@ module.exports = {
     name: Events.InteractionCreate,
     async execute(interaction) {
         const logChannelId = '1304485095498977351'; 
-
+                const banner = "https://media.discordapp.net/attachments/1261011896950329374/1308372520130580491/Section_Designs_Customer_Review_1.png?ex=673db45d&is=673c62dd&hm=5d4e38e0e9824554608b5b74de3fd93f8d9f03b5b4eee4a390a4bd11ba1d2dff&=&format=webp&quality=lossless"
+                const productbanner = "https://media.discordapp.net/attachments/1261011896950329374/1308377340811808810/Section_Designs_Customer_Review_2.png?ex=673db8da&is=673c675a&hm=e8d7dbc3a7e00c778b6e457227ae06ac3dd731da28519562531ff8ef956b9591&=&format=webp&quality=lossless"
       
         if (interaction.isStringSelectMenu()) {
             if (interaction.customId === 'supportOptions') {
@@ -97,16 +98,22 @@ module.exports = {
                     ],
                 });
 
+                const purchaseembedbanner = new EmbedBuilder()  
+                .setImage(productbanner)
+                .setColor(3746291);
+
                 const purchaseEmbed = new EmbedBuilder()
-                    .setTitle('Product Purchase')
-                    .setDescription(`Hello <@${interaction.user.id}>, welcome to your new product purchase ticket. Please wait for a designer to come and claim your ticket.`)
+                    .setTitle('<:Sectiondesigns:1307714260691976202> Section Designs Product Purchase')
+                    .setDescription(`<a:waving:1307516449887223850> Hi @𝐵𝒜𝒵𝒜, welcome to your new product purchase ticket. Please wait for a designer to come and claim your ticket. Make sure\nto read our terms of conditions in <#1307293226322890766>!!`)
                     .setFields([
                         { name: 'Needed', value: member },
+
                         { name: 'When Needed', value: reason },
+
                         { name: 'Notes', value: proof },
                     ])
                     .setColor(`#4b5afa`)
-.setImage("https://cdn.discordapp.com/attachments/1304492271529627668/1307297439094538400/2_3.png?ex=6739cb1d&is=6738799d&hm=cbb613f0797836c8ade15115707b568e4c09823f57f14c98675e955cb7df008b&")
+.setImage("https://media.discordapp.net/attachments/1261011896950329374/1307742871138336818/Section_Designs.png?ex=673d6435&is=673c12b5&hm=b298d727c32c03a139ffef3a22d9e8b52dc883bca8e5978ce4cf41892429c0d7&=&format=webp&quality=lossless")
 .setFooter({ 
     text: 'Section Designs',
     iconURL: 'https://cdn.discordapp.com/icons/1304459131083554826/738867c4f3670f6d91146927dbbbe81b.png?size=4096'
@@ -117,7 +124,7 @@ module.exports = {
                     .setLabel('Close')
                     .setStyle(ButtonStyle.Danger);
 
-                await purchaseChannel.send({ content: `<@${interaction.user.id}>, <@&1304460559751581800>`, embeds: [purchaseEmbed], components: [new ActionRowBuilder().addComponents(purchaseCloseButton)] });
+                await purchaseChannel.send({ content: `<@${interaction.user.id}>, <@&1304460559751581800>`, embeds: [purchaseembedbanner, purchaseEmbed], components: [new ActionRowBuilder().addComponents(purchaseCloseButton)] });
 
               
                 const logChannel = interaction.guild.channels.cache.get(logChannelId);
@@ -139,6 +146,7 @@ module.exports = {
 
             if (interaction.customId === 'ticketReasonModal') {
                 const reason = interaction.fields.getTextInputValue('reasonInput');
+                const ticketopener = interaction.user.id;
 
                 await interaction.deferReply({ ephemeral: true });
 
@@ -160,14 +168,19 @@ module.exports = {
                         },
                     ],
                 });
+                const supportembedbanner = new EmbedBuilder()  
+                .setImage(banner)
+                .setColor(3746291);
 
                 const supportEmbed = new EmbedBuilder()
-                    .setTitle('Support Ticket')
-                    .setDescription(`<a:waving:1307516449887223850> Hi <@${interaction.user.id}>,  Welcome to Section Designs Support! Kindly review our brief guidelines below to ensure your ticket is handled as smoothly as possible.`)
+                    .setTitle('<:Sectiondesigns:1307714260691976202> Section Designs Support Ticket')
+                    .setDescription(`<a:waving:1307516449887223850> Hi @𝐵𝒜𝒵𝒜, Welcome to Section Designs Support! \nKindly review our brief guidelines below to ensure your ticket is handled as smoothly as possible.`)
                     .setFields([
                         { name: 'Reason', value: reason },
+
+                        {name: 'TicketOpener', value: ticketopener },
                     ])
-                    .setImage("https://cdn.discordapp.com/attachments/1304492271529627668/1307297713666392094/2_4.png?ex=6739cb5f&is=673879df&hm=b94635f2f972372bfd5812996e7be080eaa8700b751fda40538e35b177731c0a&")
+                    .setImage("https://media.discordapp.net/attachments/1261011896950329374/1307742871138336818/Section_Designs.png?ex=673d6435&is=673c12b5&hm=b298d727c32c03a139ffef3a22d9e8b52dc883bca8e5978ce4cf41892429c0d7&=&format=webp&quality=lossless")
                     .setColor(`#4b5afa`)
                         .setFooter({ 
                             text: 'Section Designs',
@@ -178,7 +191,7 @@ module.exports = {
                     .setLabel('Close')
                     .setStyle(ButtonStyle.Danger);
 
-                await supportChannel.send({ content: `<@${interaction.user.id}>`, embeds: [supportEmbed], components: [new ActionRowBuilder().addComponents(supportCloseButton)] });
+                await supportChannel.send({ content: `<@${interaction.user.id}>`, embeds: [supportembedbanner, supportEmbed], components: [new ActionRowBuilder().addComponents(supportCloseButton)] });
 
              
                 const logChannel = interaction.guild.channels.cache.get(logChannelId);
