@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, PermissionsBitField } = require('@discordjs/builders');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -14,6 +14,8 @@ module.exports = {
         .setRequired(true)),
   async execute(interaction) {
     const guild = interaction.guild;
+            if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+            return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
     const member = guild.members.cache.get(interaction.options.getUser('user').id);
     const role = interaction.options.getRole('role');
 
