@@ -104,7 +104,7 @@ module.exports = {
 
                 const purchaseEmbed = new EmbedBuilder()
                     .setTitle('<:Sectiondesigns:1307714260691976202> Section Designs Product Purchase')
-                    .setDescription(`<a:waving:1307516449887223850> Hi @𝐵𝒜𝒵𝒜, welcome to your new product purchase ticket. Please wait for a designer to come and claim your ticket. Make sure\nto read our terms of conditions in <#1307293226322890766>!!`)
+                    .setDescription(`<a:waving:1307516449887223850> Hi <@${interaction.user.id}>, welcome to your new product purchase ticket. Please wait for a designer to come and claim your ticket. Make sure\nto read our terms of conditions in <#1307293226322890766>!!`)
                     .setFields([
                         { name: 'Needed', value: member },
 
@@ -174,7 +174,7 @@ module.exports = {
 
                 const supportEmbed = new EmbedBuilder()
                     .setTitle('<:Sectiondesigns:1307714260691976202> Section Designs Support Ticket')
-                    .setDescription(`<a:waving:1307516449887223850> Hi @𝐵𝒜𝒵𝒜, Welcome to Section Designs Support! \nKindly review our brief guidelines below to ensure your ticket is handled as smoothly as possible.`)
+                    .setDescription(`<a:waving:1307516449887223850> Hi <@${interaction.user.id}>, Welcome to Section Designs Support! \nKindly review our brief guidelines below to ensure your ticket is handled as smoothly as possible.`)
                     .setFields([
                         { name: 'Reason', value: reason },
 
