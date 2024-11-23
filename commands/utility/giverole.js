@@ -14,17 +14,21 @@ module.exports = {
         .setRequired(true)),
   async execute(interaction) {
     const guild = interaction.guild;
-            if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-            return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
+
+    // Permission check for Administrator
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
+    }
+
     const member = guild.members.cache.get(interaction.options.getUser('user').id);
     const role = interaction.options.getRole('role');
 
     try {
       await member.roles.add(role);
-      await interaction.reply(`The role ${role.name} has been added to ${member.user.username}.`);
+      await interaction.reply({ content: `The role ${role.name} has been added to ${member.user.username}.` });
     } catch (error) {
       console.error(error);
-      await interaction.reply('There was an error giving the role.');
+      await interaction.reply({ content: 'There was an error giving the role.', ephemeral: true });
     }
-  },
+  }
 };
